@@ -33,7 +33,7 @@ fun startRecong(bitmap: Bitmap) : String{
     val httpTransport = AndroidHttp.newCompatibleTransport()
     val jsonFactory: JsonFactory = GsonFactory.getDefaultInstance()
     val requestInitializer =
-        VisionRequestInitializer("AIzaSyCH5Trwbc9551mrVNK_tNL-mUB62OYqrvE")
+        VisionRequestInitializer("YOUR_API_KEY")
 
     val builder = Vision.Builder(httpTransport, jsonFactory, null)
     builder.setVisionRequestInitializer(requestInitializer)
