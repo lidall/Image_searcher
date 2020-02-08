@@ -17,7 +17,7 @@ class LocalUnitTest {
 
     @Test
     fun seeifXMLwork() {
-        var urlList: MutableList<String> = sendGet("https://www.googleapis.com/customsearch/v1?key=AIzaSyC3GS91Y4cuU0Zn2h3q1MljhQfMbrDzN5U&cx=008703567195112023548:4vjes8tbtlk&q=building")
+        var urlList: MutableList<String> = sendGet("https://www.googleapis.com/customsearch/v1?key=YOUR_KEY&cx=YOUR_CX&q=building")
         for (item in urlList) {
             println(item)
         }
@@ -26,7 +26,7 @@ class LocalUnitTest {
     @Test
     fun seeifGoogleAPIwork() {
 
-        val filepath = "/Users/harry/Desktop/cat.jpeg"
+        val filepath = "/Users/Lida/Desktop/cat.jpeg"
         val imagefile = File(filepath)
         var fis: FileInputStream? = null
         try {
