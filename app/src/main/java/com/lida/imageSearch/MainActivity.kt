@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private var btn: Button? = null
     private val GALLERY = 1
     private val CAMERA = 2
+    private val URL = "https://www.googleapis.com/customsearch/v1?key=YOUR_KEY&cx=YOUR_CX&q="
     companion object {
         var urlList = mutableListOf<String>()
     }
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
             llProgressBar.visibility = View.VISIBLE
             val searchObj = editTextSearch.text.toString()
-            urlList = sendGet("https://www.googleapis.com/customsearch/v1?key=AIzaSyC3GS91Y4cuU0Zn2h3q1MljhQfMbrDzN5U&cx=008703567195112023548:4vjes8tbtlk&q=" + searchObj)
+            urlList = sendGet(URL + searchObj)
             val intent = Intent(this@MainActivity, DisplayResult::class.java)
 
             llProgressBar.visibility = View.GONE
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                 val contentURI = data!!.data
                 val bitmapGallery = MediaStore.Images.Media.getBitmap(this.contentResolver, contentURI)
                 val searchObj = startRecong(bitmapGallery)!!.split("0")[0].replace(" ", "")
-                urlList = sendGet("https://www.googleapis.com/customsearch/v1?key=AIzaSyC3GS91Y4cuU0Zn2h3q1MljhQfMbrDzN5U&cx=008703567195112023548:4vjes8tbtlk&q=" + searchObj)
+                urlList = sendGet(URL + searchObj)
                 val intent = Intent(this@MainActivity, DisplayResult::class.java)
                 startActivity(intent);
             }
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity() {
         {
             val bitmapPhoto = data!!.extras!!.get("data") as Bitmap
             val searchObj = startRecong(bitmapPhoto)!!.split("0")[0].replace(" ", "")
-            urlList = sendGet("https://www.googleapis.com/customsearch/v1?key=AIzaSyC3GS91Y4cuU0Zn2h3q1MljhQfMbrDzN5U&cx=008703567195112023548:4vjes8tbtlk&q=" + searchObj)
+            urlList = sendGet(URL + searchObj)
             val intent = Intent(this@MainActivity, DisplayResult::class.java)
             startActivity(intent);
         }
